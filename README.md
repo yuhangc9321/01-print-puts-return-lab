@@ -223,25 +223,26 @@ say_wahoo
 
 What do you think will happen when we run this file?  Make a prediction.  Then run the code and see if you were right.
 
-If you guessed correctly, we saw `yeehaw` but not `wahoo`. Why? Because the string `wahoo` was never `puts`'d.  At this point, you might be thinking that the first method (`say_yeehaw`) is better, but let's prove why the opposite is true.
+If you guessed correctly, we saw `yeehaw` but not `wahoo`. Why? Because the string `wahoo` was never `puts`'d.  At this point, you might be thinking that the first method (`#say_yeehaw`) is better, but let's prove why the opposite is true.
 
-The method `say_wahoo` may not `puts` anything, but here's two reasons why you wouldn't necessarily want to:
-1. The end goal in Ruby is to make web applications for users on the web.  But people who cruise the interwebs never interact with the command line, so using a method like `say_yeehaw` that can `puts` (which is good for us developers when we're debugging) but doesn't **return** anything isn't of much use when trying to display information to users in the browser.
-2. More importantly, we might want to manipulate the return value somewhere else in the program, and we can't do that with `puts` which returns `nil`.
+The method `#say_wahoo` may not `puts` anything, but here's two reasons why you wouldn't necessarily want to:
+1. The end goal in Ruby is to make web applications for users on the web.  But people who cruise the interwebs never interact with the command line, so using a method like `#say_yeehaw` that can `puts` (which is good for us developers when we're debugging) but doesn't **return** anything isn't of much use when trying to display information to users in the browser.
+2. More importantly, we might want to manipulate the return value somewhere else in the program (like where the method is called from), and we can't do that with `puts` which returns `nil`.
 
-Let's demonstrate that point.  First of all, it still **is** possible to see `wahoo` in the command line.  Remember, `say_wahoo` implicitly **returns** the string `"wahoo"` **to where it was called from** (on line 10).  That means we could `puts` the return value by changing line 10 to say:
+Let's demonstrate that point.  First of all, it **is** still possible to see `wahoo` in the command line.  Remember, `#say_wahoo` implicitly **returns** the string `"wahoo"` **to where it was called from** (on line 10).  That means we could `puts` the return value by changing line 10 to say:
 
 ```puts say_wahoo```
 
-Run this code, and should see both methods sending strings to your command line in different ways.To reiterate, line 10 `puts` the **value** that is **returned** from `say_wahoo` when it finishes running, which is `"wahoo"`.
+Run this code, and should see both methods sending strings to your command line in different ways.To reiterate, line 10 `puts` the **value** that is **returned** from `#say_wahoo` when it finishes running, which is `"wahoo"`.
 
 More importantly, we can still __manipulate__ that string on line 10.  Let's change it a little more to now say:
 
 ```puts say_wahoo.upcase```
 
 This may seem a little funky, but the same procedure is happening: 
-1. `say_wahoo` is called
+1. `#say_wahoo` is called
 2. The return value of `"wahoo"` is sent back to line 10
-3. It is then upcased
+3. That return value is then upcased
 4. It is then `puts`'d
  
+If you're still feeling confused, feel free to keep tinkering with the code (either `#say_yeehaw` and `#say_wahoo` or your own new methods)
