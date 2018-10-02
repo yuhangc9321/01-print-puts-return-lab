@@ -7,4 +7,4 @@ def say_wahoo
 end
 
 say_yeehaw
-say_wahoo
+puts say_wahoo.upcase
